@@ -20,9 +20,9 @@ Route::get('/',[HomeController::class,'index']);
 Route::prefix('/clients')->group(function () {
     Route::get('/', [ClientsController::class,'index']); // listagem de Clients
     Route::get('/create', [ClientsController::class,'create']); // formulário de criação de Clients
-    Route::post('/store', [ClientsController::class,'store']); // criação de Clientss
-    Route::get('/{id}/edit', [ClientsController::class,'edit']); // formulário de edição de Clients
-    Route::put('/{id}/update', [ClientsController::class,'update']); // edição de Clients
+    Route::post('/store', [ClientsController::class,'createAction']); // criação de Clientss
+    Route::get('/{id}/edit', [ClientsController::class,'update']); // formulário de edição de Clients
+    Route::put('/{id}/update', [ClientsController::class,'updateAction']); // edição de Clients
     Route::delete('/{id}/destroy',[ClientsController::class,'destroy']); // exclusão de lients
 });
 Route::prefix('/employees')->group(function () {

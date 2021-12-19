@@ -35,7 +35,7 @@
                     <td>data_vencimento </td>
                     <td>unidade_consumidora </td>
                     <td>kwh </td>
-                    <td>valor_total ?></td>
+                    <td>valor_total </td>
                     <td>
                         <a href="#"><button type="button" class="btn btn-primary ">Editar</button></a>
                         <a href="#"><button type="button" class="btn btn-danger">Excluir</button></a>
