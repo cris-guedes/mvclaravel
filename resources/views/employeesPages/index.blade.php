@@ -1,6 +1,15 @@
 @extends('template.template')
 
+<!--
 
+CAMPOS DA TABELA ClIENTS
+id
+nome
+telefone
+cpf
+cargo
+
+-->
 @section('content')
 
 

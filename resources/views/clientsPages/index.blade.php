@@ -1,3 +1,13 @@
+<!--
+
+CAMPOS DA TABELA ClIENTS
+id
+nome
+telefone
+cpf
+
+-->
+
 @extends('template.template')
 
 @section('content')
