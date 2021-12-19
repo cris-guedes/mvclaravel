@@ -33,3 +33,20 @@ Route::prefix('/employees')->group(function () {
     Route::put('/{id}/update', [EmployeesController::class,'update']); // edição de Employees
     Route::delete('/{id}/destroy',[EmployeesController::class,'destroy']); // exclusão de lients
 });
+Route::prefix('/products')->group(function () {
+    Route::get('/', [ProductsController::class,'index']); // listagem de Products
+    Route::get('/create', [ProductsController::class,'create']); // formulário de criação de Products
+    Route::post('/store', [ProductsController::class,'store']); // criação de Productss
+    Route::get('/{id}/edit', [ProductsController::class,'edit']); // formulário de edição de Products
+    Route::put('/{id}/update', [ProductsController::class,'update']); // edição de Products
+    Route::delete('/{id}/destroy',[ProductsController::class,'destroy']); // exclusão de lients
+});
+Route::prefix('/ramals')->group(function () {
+    Route::get('/', [RamalsController::class,'index']); // listagem de Ramals
+    Route::get('/create', [RamalsController::class,'create']); // formulário de criação de Ramals
+    Route::post('/store', [RamalsController::class,'store']); // criação de Ramalss
+    Route::get('/{id}/edit', [RamalsController::class,'edit']); // formulário de edição de Ramals
+    Route::put('/{id}/update', [RamalsController::class,'update']); // edição de Ramals
+    Route::delete('/{id}/destroy',[RamalsController::class,'destroy']); // exclusão de lients
+});
+
