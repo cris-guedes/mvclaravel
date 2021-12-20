@@ -12,20 +12,22 @@
                             <th>Nome</th>
                             <th>Telefone</th>
                             <th>CPF</th>
-                            <th>Funções</th>
+                            <th>Cargo</th>
+
                         </tr>
                     </thead>
                     <tbody>
-                        @if (count($clients) > 0)
-                            @foreach ($clients as $client)
+                        @if (count($employees) > 0)
+                            @foreach ($employees as $employee)
                                 <tr>
-                                    <td>{{ $client->id }}</td>
-                                    <td>{{ $client->nome }}</td>
-                                    <td>{{ $client->telefone }}</td>
-                                    <td>{{ $client->cpf }}</td>
-                                    <td><a href="{{ url('clients/update/' . $client->id) }}"><button type="button"
+                                    <td>{{ $employee->id }}</td>
+                                    <td>{{ $employee->nome }}</td>
+                                    <td>{{ $employee->telefone }}</td>
+                                    <td>{{ $employee->cpf }}</td>
+                                    <td>{{ $employee->cargo }}</td>
+                                    <td><a href="{{ url('employees/update/' . $employee->id) }}"><button type="button"
                                                 class="btn btn-primary">Editar</button></a>
-                                        <a href="{{ url('clients/destroy/' . $client->id) }}"><button type="button"
+                                        <a href="{{ url('employees/destroy/' . $employee->id) }}"><button type="button"
                                                 class="btn btn-danger">Excluir</button></a>
                                     </td>
                                 </tr>
@@ -33,15 +35,14 @@
 
                         @else
                             <tr>
-                                <td colspan="5">Nenhum cliente encontrado</td>
+                                <td colspan="5">Nenhum funcionário encontrado</td>
                             </tr>
                         @endif
 
                     </tbody>
                 </table>
             </div>
-            <a href="{{ url('/clients/create') }}"><button type="button" class="btn btn-warning">Cadastrar</button></a>
+            <a href="{{ url('/employees/create') }}"><button type="button" class="btn btn-warning">Cadastrar</button></a>
         </div>
     </body>
-
 @endsection
