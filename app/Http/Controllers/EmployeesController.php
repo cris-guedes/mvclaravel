@@ -9,7 +9,8 @@ class EmployeesController extends Controller
 {
     public function index()
     {
-        return view('employeesPages.index');
+        $employees = DB::select('SELECT * FROM employees');
+        return view('employeesPages.index', ['employees' => $employees]);
     }
     public function create()
     {
@@ -22,31 +23,31 @@ class EmployeesController extends Controller
      $cpf =$request->input('cpf');
      $cargo =$request->input('cargo');
     DB::insert('insert into employees (nome,telefone,cpf,cargo) values (?,?,?,?)',[$nome,$telefone,$cpf,$cargo]);
-
+    return redirect('/employees');
 
 
     }
-    public function update()
+    public function update($id)
     {
-
-        return view('employeesPages.update');
+        $employee = DB::select('SELECT * FROM employees where id = ?',[$id]);
+        return view('employeesPages.update', ['employee' => $employee[0]]);
     }
+
     public function updateAction(Request $request){
     $nome =$request->input('nome');
     $telefone =$request->input('telefone');
     $cpf =$request->input('cpf');
     $cargo =$request->input('cargo');
     $id=$request->input('id');
-    DB::update('update employees set nome = ?, telefone = ?, cpf = ?, cargo = ? where id = ?',[$nome,$telefone,$cpf,$cargo,$id]);
+    DB::update('UPDATE employees set nome = ?, telefone = ?, cpf = ?, cargo = ? where id = ?',[$nome,$telefone,$cpf,$cargo,$id]);
 
-
+    return redirect('/employees');
 
     }
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $id=$request->input('id');
-        DB::delete('delete from employees where id = ?',[$id]);
-
-
+        DB::delete('DELETE from employees where id = ?',[$id]);
+        return redirect('/employees');
     }
+
 }

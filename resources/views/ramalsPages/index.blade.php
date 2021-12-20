@@ -9,23 +9,20 @@
                     <thead class="table-light">
                         <tr>
                             <th>ID</th>
-                            <th>Nome</th>
-                            <th>Telefone</th>
-                            <th>CPF</th>
-                            <th>Funções</th>
+                            <th>Setor</th>
+                            <th>Numero</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if (count($clients) > 0)
-                            @foreach ($clients as $client)
+                        @if (count($ramals) > 0)
+                            @foreach ($ramals as $ramal)
                                 <tr>
-                                    <td>{{ $client->id }}</td>
-                                    <td>{{ $client->nome }}</td>
-                                    <td>{{ $client->telefone }}</td>
-                                    <td>{{ $client->cpf }}</td>
-                                    <td><a href="{{ url('clients/update/' . $client->id) }}"><button type="button"
+                                    <td>{{ $ramal->id }}</td>
+                                    <td>{{ $ramal->setor }}</td>
+                                    <td>{{ $ramal->numero }}</td>
+                                    <td><a href="{{ url('ramals/update/' . $ramal->id) }}"><button type="button"
                                                 class="btn btn-primary">Editar</button></a>
-                                        <a href="{{ url('clients/destroy/' . $client->id) }}"><button type="button"
+                                        <a href="{{ url('ramals/destroy/' . $ramal->id) }}"><button type="button"
                                                 class="btn btn-danger">Excluir</button></a>
                                     </td>
                                 </tr>
@@ -33,15 +30,14 @@
 
                         @else
                             <tr>
-                                <td colspan="5">Nenhum cliente encontrado</td>
+                                <td colspan="5">Nenhum Ramal encontrado</td>
                             </tr>
                         @endif
 
                     </tbody>
                 </table>
             </div>
-            <a href="{{ url('/clients/create') }}"><button type="button" class="btn btn-warning">Cadastrar</button></a>
+            <a href="{{ url('/ramals/create') }}"><button type="button" class="btn btn-warning">Cadastrar</button></a>
         </div>
     </body>
-
 @endsection

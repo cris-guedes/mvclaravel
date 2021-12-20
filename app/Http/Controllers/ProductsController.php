@@ -9,7 +9,8 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        return view('productsPages.index');
+        $products = DB::select('SELECT * FROM products');
+        return view('productsPages.index', ['products' => $products]);
     }
     public function create()
     {
@@ -21,13 +22,14 @@ class ProductsController extends Controller
      $categoria =$request->input('categoria');
      $valor =$request->input('valor');
      $marca = $request->input('marca');
-     DB::insert('insert into products (nome,categoria,valor,marca) values (?,?,?,?)',[$nome,$categoria,$valor,$marca]);
-
+     DB::insert('INSERT into products (nome,categoria,valor,marca) values (?,?,?,?)',[$nome,$categoria,$valor,$marca]);
+        return redirect('/products');
     }
-    public function update()
+    public function update($id)
     {
+        $product = DB::select('SELECT * FROM products WHERE id = ?', [$id]);
+        return view('productsPages.update', ['product' => $product[0]]);
 
-        return view('productsPages.update');
     }
     public function updateAction(Request $request){
     $nome =$request->input('nome');
@@ -35,14 +37,15 @@ class ProductsController extends Controller
     $valor =$request->input('valor');
     $marca = $request->input('marca');
     $id=$request->input('id');
-    DB::update('update products set nome = ?, categoria = ?, valor = ?, marca = ? where id = ?',[$nome,$categoria,$valor,$marca,$id]);
-
+    DB::update('UPDATE products set nome = ?, categoria = ?, valor = ?, marca = ? where id = ?',[$nome,$categoria,$valor,$marca,$id]);
+    return redirect('/products');
 
     }
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $id=$request->input('id');
+
         DB::delete('delete from products where id = ?',[$id]);
+        return redirect('/products');
 
 
     }
